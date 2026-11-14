@@ -1,10 +1,10 @@
-=== Lupa Zoom ===
+=== Agencia RSE Image Zoom ===
 Contributors: dmeijide
 Tags: image zoom, magnifier, hover zoom, woocommerce, elementor
 Requires at least: 5.6
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ WooCommerce product zoom, without depending on WooCommerce or on the theme.
 * Works with lazy loading (it waits for the placeholder to be replaced).
 * Works with content loaded by AJAX, sliders and Elementor (MutationObserver).
 * Optional on touch screens: press and drag.
-* Settings in *Settings > Lupa Zoom*.
+* Settings in *Settings > Agencia RSE Image Zoom*.
 
 "Lupa" is Spanish for magnifying glass.
 
@@ -44,25 +44,25 @@ Page builders: put the class on the widget and the image stays inside it.
 
 Shortcode:
 
-    [lupa_zoom id="123"]
-    [lupa_zoom src="photo.jpg" large="photo-full.jpg" zoom="3" mode="lens"]
+    [agrse_zoom id="123"]
+    [agrse_zoom src="photo.jpg" large="photo-full.jpg" zoom="3" mode="lens"]
 
-Per-image attributes: `data-lupa-src`, `data-lupa-zoom`, `data-lupa-mode`,
+Per-image attributes: `data-lupa-src`, `data-agencia-rse-image-zoom`, `data-lupa-mode`,
 `data-lupa-lens`.
 
-JavaScript API: `LupaZoom.refresh()`, `LupaZoom.destroyAll()` and the
+JavaScript API: `AgrseZoom.refresh()`, `AgrseZoom.destroyAll()` and the
 `lupa:refresh` event (`document.dispatchEvent(new CustomEvent('lupa:refresh'))`).
 
-PHP filters: `lupa_zoom_should_enqueue`, `lupa_zoom_config`.
+PHP filters: `agrse_zoom_should_enqueue`, `agrse_zoom_config`.
 
 The plugin makes no external requests and stores no visitor data.
 
 == Installation ==
 
-1. Install the plugin from *Plugins > Add New*, or upload the `lupa-zoom` folder to `/wp-content/plugins/`.
+1. Install the plugin from *Plugins > Add New*, or upload the `agencia-rse-image-zoom` folder to `/wp-content/plugins/`.
 2. Activate it.
 3. Add the `lupa` class to an image or to the block that wraps it.
-4. Optional: adjust the mode and zoom level in *Settings > Lupa Zoom*.
+4. Optional: adjust the mode and zoom level in *Settings > Agencia RSE Image Zoom*.
 
 == Frequently Asked Questions ==
 
@@ -78,10 +78,13 @@ The one in `data-lupa-src` if present. Otherwise it picks the largest image in t
 
 = How do I load it only on some pages? =
 
-Return `false` from the `lupa_zoom_should_enqueue` filter on the pages where you
+Return `false` from the `agrse_zoom_should_enqueue` filter on the pages where you
 don't need it.
 
 == Changelog ==
+
+= 1.3.0 =
+* Renamed to Agencia RSE Image Zoom (slug agencia-rse-image-zoom). Shortcode is now [agrse_zoom]; PHP filters and the JS API use the agrse prefix.
 
 = 1.2.0 =
 * Settings screen in English, with every string translatable.

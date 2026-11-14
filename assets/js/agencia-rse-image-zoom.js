@@ -1,5 +1,5 @@
 /*!
- * Lupa Zoom v1.2.0
+ * Agencia RSE Image Zoom v1.3.0
  * Efecto lupa tipo WooCommerce para cualquier imagen, sin dependencias.
  *
  * La clase (.lupa por defecto) puede ir en la propia <img> o en cualquier
@@ -9,7 +9,7 @@
 ( function () {
 	'use strict';
 
-	var CFG = window.LupaZoomConfig || {};
+	var CFG = window.AgrseZoomConfig || {};
 
 	var opts = {
 		selector:   CFG.selector   || '.lupa',
@@ -484,8 +484,8 @@
 		this.fitPx = fit.px;
 		this.fitPy = fit.py;
 
-		var factor = parseFloat( this.target.getAttribute( 'data-lupa-zoom' ) ) ||
-			( this.img && parseFloat( this.img.getAttribute( 'data-lupa-zoom' ) ) ) ||
+		var factor = parseFloat( this.target.getAttribute( 'data-agencia-rse-image-zoom' ) ) ||
+			( this.img && parseFloat( this.img.getAttribute( 'data-agencia-rse-image-zoom' ) ) ) ||
 			opts.zoom;
 		if ( ! factor ) {
 			// Automático: usa toda la resolución real del archivo.
@@ -851,7 +851,7 @@
 		} );
 	}
 
-	window.LupaZoom = {
+	window.AgrseZoom = {
 		refresh: function ( root ) {
 			scan( root );
 		},

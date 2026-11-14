@@ -1,9 +1,9 @@
 """
-Builds the es_ES .po to import into translate.wordpress.org (project lupa-zoom, "Stable" code strings).
+Builds the es_ES .po to import into translate.wordpress.org (project agencia-rse-image-zoom, "Stable" code strings).
 
     python wporg-i18n/build_po.py
 
-Every msgid must match the English source exactly; the script aborts if lupa-zoom.php
+Every msgid must match the English source exactly; the script aborts if agencia-rse-image-zoom.php
 has a translatable string with no translation here.
 """
 import re
@@ -12,12 +12,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 T = {
-    'Lupa Zoom': 'Lupa Zoom',
+    'Agencia RSE Image Zoom': 'Agencia RSE Image Zoom',
     'WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).':
         'Efecto lupa (zoom al pasar el ratón) tipo WooCommerce para cualquier imagen de cualquier tema. Basta con añadir la clase CSS <code>lupa</code> a la imagen o al contenedor que la envuelve (widget de Elementor, elemento de WPBakery, etc.).',
     'AGENCIA RSE': 'AGENCIA RSE',
     'https://agenciarse.com/': 'https://agenciarse.com/',
-    'https://github.com/agenciaRSE/lupa-zoom': 'https://github.com/agenciaRSE/lupa-zoom',
+    'https://github.com/agenciaRSE/agencia-rse-image-zoom': 'https://github.com/agenciaRSE/agencia-rse-image-zoom',
     'Settings': 'Ajustes',
     'Add the %s class to turn on hover zoom.': 'Añade la clase %s para activar el zoom al pasar el ratón.',
     'The class can go on the image itself or on any block that wraps it: an Elementor widget, a WPBakery element, a figure, a link… It also works on elements whose image is a CSS background-image.':
@@ -30,8 +30,8 @@ T = {
     'Lens + side panel': 'Lupa + panel lateral',
     'Override it per image with data-lupa-mode="lens".': 'Se puede sobrescribir por imagen con data-lupa-mode="lens".',
     'Zoom level': 'Nivel de zoom',
-    '0 = automatic (uses the real resolution of the original file). Override it per image with data-lupa-zoom="2.5".':
-        '0 = automático (usa la resolución real del archivo original). Se puede sobrescribir con data-lupa-zoom="2.5".',
+    '0 = automatic (uses the real resolution of the original file). Override it per image with data-agencia-rse-image-zoom="2.5".':
+        '0 = automático (usa la resolución real del archivo original). Se puede sobrescribir con data-agencia-rse-image-zoom="2.5".',
     'Automatic zoom limits': 'Límites del zoom automático',
     'Minimum': 'Mínimo',
     'Maximum': 'Máximo',
@@ -57,7 +57,7 @@ T = {
     'Lens size in px (lens mode).': 'Tamaño de la lupa en px (modo lens).',
 }
 
-src = (ROOT / 'lupa-zoom.php').read_text(encoding='utf-8')
+src = (ROOT / 'agencia-rse-image-zoom.php').read_text(encoding='utf-8')
 found = {m.replace("\\'", "'") for m in re.findall(
     r"(?:esc_html_e|esc_html__|esc_attr_e|esc_attr__|_e|__)\(\s*'((?:[^'\\]|\\.)*)'", src)}
 missing = found - set(T)
@@ -71,7 +71,7 @@ def q(text):
 
 lines = [
     'msgid ""', 'msgstr ""',
-    '"Project-Id-Version: Lupa Zoom\\n"',
+    '"Project-Id-Version: Agencia RSE Image Zoom\\n"',
     '"Language: es_ES\\n"',
     '"MIME-Version: 1.0\\n"',
     '"Content-Type: text/plain; charset=UTF-8\\n"',
@@ -82,6 +82,6 @@ lines = [
 for msgid, msgstr in T.items():
     lines += ['msgid ' + q(msgid), 'msgstr ' + q(msgstr), '']
 
-out = Path(__file__).resolve().parent / 'lupa-zoom-es_ES-code.po'
+out = Path(__file__).resolve().parent / 'agencia-rse-image-zoom-es_ES-code.po'
 out.write_text('\n'.join(lines), encoding='utf-8', newline='\n')
 print('%d strings in the code, all translated -> %s' % (len(found), out.name))

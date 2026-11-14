@@ -1,32 +1,32 @@
 <?php
 /**
- * Plugin Name:       Lupa Zoom
- * Plugin URI:        https://github.com/agenciaRSE/lupa-zoom
+ * Plugin Name:       Agencia RSE Image Zoom
+ * Plugin URI:        https://github.com/agenciaRSE/agencia-rse-image-zoom
  * Description:       WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).
- * Version:           1.2.0
+ * Version:           1.3.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            AGENCIA RSE
  * Author URI:        https://agenciarse.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       lupa-zoom
+ * Text Domain:       agencia-rse-image-zoom
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LUPA_ZOOM_VERSION', '1.2.0' );
-define( 'LUPA_ZOOM_FILE', __FILE__ );
-define( 'LUPA_ZOOM_URL', plugin_dir_url( __FILE__ ) );
-define( 'LUPA_ZOOM_PATH', plugin_dir_path( __FILE__ ) );
+define( 'AGRSE_ZOOM_VERSION', '1.3.0' );
+define( 'AGRSE_ZOOM_FILE', __FILE__ );
+define( 'AGRSE_ZOOM_URL', plugin_dir_url( __FILE__ ) );
+define( 'AGRSE_ZOOM_PATH', plugin_dir_path( __FILE__ ) );
 
-final class Lupa_Zoom {
+final class AGRSE_Image_Zoom {
 
-	const OPTION = 'lupa_zoom_settings';
+	const OPTION = 'agrse_zoom_settings';
 
-	/** @var Lupa_Zoom|null */
+	/** @var AGRSE_Image_Zoom|null */
 	private static $instance = null;
 
 	public static function instance() {
@@ -40,8 +40,8 @@ final class Lupa_Zoom {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 20 );
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( LUPA_ZOOM_FILE ), array( $this, 'action_links' ) );
-		add_shortcode( 'lupa_zoom', array( $this, 'shortcode' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( AGRSE_ZOOM_FILE ), array( $this, 'action_links' ) );
+		add_shortcode( 'agrse_zoom', array( $this, 'shortcode' ) );
 	}
 
 	/* ---------------------------------------------------------------------
@@ -74,7 +74,7 @@ final class Lupa_Zoom {
 
 	public function register_settings() {
 		register_setting(
-			'lupa_zoom_group',
+			'agrse_zoom_group',
 			self::OPTION,
 			array(
 				'type'              => 'array',
@@ -109,8 +109,8 @@ final class Lupa_Zoom {
 	}
 
 	public function action_links( $links ) {
-		$url = admin_url( 'options-general.php?page=lupa-zoom' );
-		array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'lupa-zoom' ) . '</a>' );
+		$url = admin_url( 'options-general.php?page=agencia-rse-image-zoom' );
+		array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'agencia-rse-image-zoom' ) . '</a>' );
 		return $links;
 	}
 
@@ -124,7 +124,7 @@ final class Lupa_Zoom {
 		 *
 		 * @param bool $load
 		 */
-		if ( ! apply_filters( 'lupa_zoom_should_enqueue', true ) ) {
+		if ( ! apply_filters( 'agrse_zoom_should_enqueue', true ) ) {
 			return;
 		}
 
@@ -141,17 +141,17 @@ final class Lupa_Zoom {
 		}
 
 		wp_enqueue_style(
-			'lupa-zoom',
-			LUPA_ZOOM_URL . 'assets/css/lupa-zoom.css',
+			'agencia-rse-image-zoom',
+			AGRSE_ZOOM_URL . 'assets/css/agencia-rse-image-zoom.css',
 			array(),
-			LUPA_ZOOM_VERSION
+			AGRSE_ZOOM_VERSION
 		);
 
 		wp_enqueue_script(
-			'lupa-zoom',
-			LUPA_ZOOM_URL . 'assets/js/lupa-zoom.js',
+			'agencia-rse-image-zoom',
+			AGRSE_ZOOM_URL . 'assets/js/agencia-rse-image-zoom.js',
 			array(),
-			LUPA_ZOOM_VERSION,
+			AGRSE_ZOOM_VERSION,
 			true
 		);
 
@@ -172,18 +172,18 @@ final class Lupa_Zoom {
 		 *
 		 * @param array $config
 		 */
-		$config = apply_filters( 'lupa_zoom_config', $config );
+		$config = apply_filters( 'agrse_zoom_config', $config );
 
 		wp_add_inline_script(
-			'lupa-zoom',
-			'window.LupaZoomConfig = ' . wp_json_encode( $config ) . ';',
+			'agencia-rse-image-zoom',
+			'window.AgrseZoomConfig = ' . wp_json_encode( $config ) . ';',
 			'before'
 		);
 	}
 
 	/**
-	 * [lupa_zoom src="..." large="..." alt="" zoom="2.5" mode="inner"]
-	 * También acepta un ID de adjunto: [lupa_zoom id="123"]
+	 * [agrse_zoom src="..." large="..." alt="" zoom="2.5" mode="inner"]
+	 * También acepta un ID de adjunto: [agrse_zoom id="123"]
 	 */
 	public function shortcode( $atts ) {
 		$atts = shortcode_atts(
@@ -198,7 +198,7 @@ final class Lupa_Zoom {
 				'size'  => 'large',
 			),
 			$atts,
-			'lupa_zoom'
+			'agrse_zoom'
 		);
 
 		$src   = $atts['src'];
@@ -235,7 +235,7 @@ final class Lupa_Zoom {
 			$attrs['data-lupa-src'] = esc_url( $large );
 		}
 		if ( $atts['zoom'] ) {
-			$attrs['data-lupa-zoom'] = esc_attr( $atts['zoom'] );
+			$attrs['data-agencia-rse-image-zoom'] = esc_attr( $atts['zoom'] );
 		}
 		if ( $atts['mode'] ) {
 			$attrs['data-lupa-mode'] = esc_attr( $atts['mode'] );
@@ -256,10 +256,10 @@ final class Lupa_Zoom {
 
 	public function add_settings_page() {
 		add_options_page(
-			__( 'Lupa Zoom', 'lupa-zoom' ),
-			__( 'Lupa Zoom', 'lupa-zoom' ),
+			__( 'Agencia RSE Image Zoom', 'agencia-rse-image-zoom' ),
+			__( 'Agencia RSE Image Zoom', 'agencia-rse-image-zoom' ),
 			'manage_options',
-			'lupa-zoom',
+			'agencia-rse-image-zoom',
 			array( $this, 'render_settings_page' )
 		);
 	}
@@ -271,97 +271,97 @@ final class Lupa_Zoom {
 		$s = self::get_settings();
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Lupa Zoom', 'lupa-zoom' ); ?></h1>
+			<h1><?php esc_html_e( 'Agencia RSE Image Zoom', 'agencia-rse-image-zoom' ); ?></h1>
 			<p>
 				<?php
 				printf(
 					/* translators: %s: CSS class */
-					esc_html__( 'Add the %s class to turn on hover zoom.', 'lupa-zoom' ),
+					esc_html__( 'Add the %s class to turn on hover zoom.', 'agencia-rse-image-zoom' ),
 					'<code>lupa</code>'
 				);
 				?>
 			</p>
 			<p class="description">
-				<?php esc_html_e( 'The class can go on the image itself or on any block that wraps it: an Elementor widget, a WPBakery element, a figure, a link… It also works on elements whose image is a CSS background-image.', 'lupa-zoom' ); ?>
+				<?php esc_html_e( 'The class can go on the image itself or on any block that wraps it: an Elementor widget, a WPBakery element, a figure, a link… It also works on elements whose image is a CSS background-image.', 'agencia-rse-image-zoom' ); ?>
 			</p>
 
 			<form method="post" action="options.php">
-				<?php settings_fields( 'lupa_zoom_group' ); ?>
+				<?php settings_fields( 'agrse_zoom_group' ); ?>
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><label for="lz-selector"><?php esc_html_e( 'CSS selector', 'lupa-zoom' ); ?></label></th>
+						<th scope="row"><label for="lz-selector"><?php esc_html_e( 'CSS selector', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<input type="text" id="lz-selector" class="regular-text code" name="<?php echo esc_attr( self::OPTION ); ?>[selector]" value="<?php echo esc_attr( $s['selector'] ); ?>" />
-							<p class="description"><?php esc_html_e( 'Images it applies to. Separate several selectors with commas. Default: .lupa', 'lupa-zoom' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Images it applies to. Separate several selectors with commas. Default: .lupa', 'agencia-rse-image-zoom' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="lz-mode"><?php esc_html_e( 'Mode', 'lupa-zoom' ); ?></label></th>
+						<th scope="row"><label for="lz-mode"><?php esc_html_e( 'Mode', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<select id="lz-mode" name="<?php echo esc_attr( self::OPTION ); ?>[mode]">
-								<option value="inner" <?php selected( $s['mode'], 'inner' ); ?>><?php esc_html_e( 'Inner zoom (like WooCommerce)', 'lupa-zoom' ); ?></option>
-								<option value="lens" <?php selected( $s['mode'], 'lens' ); ?>><?php esc_html_e( 'Lens + side panel', 'lupa-zoom' ); ?></option>
+								<option value="inner" <?php selected( $s['mode'], 'inner' ); ?>><?php esc_html_e( 'Inner zoom (like WooCommerce)', 'agencia-rse-image-zoom' ); ?></option>
+								<option value="lens" <?php selected( $s['mode'], 'lens' ); ?>><?php esc_html_e( 'Lens + side panel', 'agencia-rse-image-zoom' ); ?></option>
 							</select>
-							<p class="description"><?php esc_html_e( 'Override it per image with data-lupa-mode="lens".', 'lupa-zoom' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Override it per image with data-lupa-mode="lens".', 'agencia-rse-image-zoom' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="lz-zoom"><?php esc_html_e( 'Zoom level', 'lupa-zoom' ); ?></label></th>
+						<th scope="row"><label for="lz-zoom"><?php esc_html_e( 'Zoom level', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<input type="number" step="0.1" min="0" max="20" id="lz-zoom" name="<?php echo esc_attr( self::OPTION ); ?>[zoom]" value="<?php echo esc_attr( $s['zoom'] ); ?>" />
-							<p class="description"><?php esc_html_e( '0 = automatic (uses the real resolution of the original file). Override it per image with data-lupa-zoom="2.5".', 'lupa-zoom' ); ?></p>
+							<p class="description"><?php esc_html_e( '0 = automatic (uses the real resolution of the original file). Override it per image with data-agencia-rse-image-zoom="2.5".', 'agencia-rse-image-zoom' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Automatic zoom limits', 'lupa-zoom' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Automatic zoom limits', 'agencia-rse-image-zoom' ); ?></th>
 						<td>
-							<label><?php esc_html_e( 'Minimum', 'lupa-zoom' ); ?>
+							<label><?php esc_html_e( 'Minimum', 'agencia-rse-image-zoom' ); ?>
 								<input type="number" step="0.1" min="1" max="20" name="<?php echo esc_attr( self::OPTION ); ?>[min_zoom]" value="<?php echo esc_attr( $s['min_zoom'] ); ?>" />
 							</label>
 							&nbsp;
-							<label><?php esc_html_e( 'Maximum', 'lupa-zoom' ); ?>
+							<label><?php esc_html_e( 'Maximum', 'agencia-rse-image-zoom' ); ?>
 								<input type="number" step="0.1" min="1" max="20" name="<?php echo esc_attr( self::OPTION ); ?>[max_zoom]" value="<?php echo esc_attr( $s['max_zoom'] ); ?>" />
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="lz-lens"><?php esc_html_e( 'Lens size (px)', 'lupa-zoom' ); ?></label></th>
+						<th scope="row"><label for="lz-lens"><?php esc_html_e( 'Lens size (px)', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<input type="number" min="40" max="800" id="lz-lens" name="<?php echo esc_attr( self::OPTION ); ?>[lens_size]" value="<?php echo esc_attr( $s['lens_size'] ); ?>" />
-							<p class="description"><?php esc_html_e( 'Only in "Lens + side panel" mode.', 'lupa-zoom' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Only in "Lens + side panel" mode.', 'agencia-rse-image-zoom' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="lz-panel"><?php esc_html_e( 'Panel width (px)', 'lupa-zoom' ); ?></label></th>
+						<th scope="row"><label for="lz-panel"><?php esc_html_e( 'Panel width (px)', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<input type="number" min="120" max="1200" id="lz-panel" name="<?php echo esc_attr( self::OPTION ); ?>[panel_width]" value="<?php echo esc_attr( $s['panel_width'] ); ?>" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="lz-fade"><?php esc_html_e( 'Fade (ms)', 'lupa-zoom' ); ?></label></th>
+						<th scope="row"><label for="lz-fade"><?php esc_html_e( 'Fade (ms)', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<input type="number" min="0" max="2000" id="lz-fade" name="<?php echo esc_attr( self::OPTION ); ?>[fade]" value="<?php echo esc_attr( $s['fade'] ); ?>" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Touch', 'lupa-zoom' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Touch', 'agencia-rse-image-zoom' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" value="1" name="<?php echo esc_attr( self::OPTION ); ?>[touch]" <?php checked( $s['touch'], 1 ); ?> />
-								<?php esc_html_e( 'Also on phones and tablets (press and drag)', 'lupa-zoom' ); ?>
+								<?php esc_html_e( 'Also on phones and tablets (press and drag)', 'agencia-rse-image-zoom' ); ?>
 							</label>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'WooCommerce', 'lupa-zoom' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'WooCommerce', 'agencia-rse-image-zoom' ); ?></th>
 						<td>
 							<label>
 								<input type="checkbox" value="1" name="<?php echo esc_attr( self::OPTION ); ?>[woo_gallery]" <?php checked( $s['woo_gallery'], 1 ); ?> />
-								<?php esc_html_e( 'Also apply to the product gallery images', 'lupa-zoom' ); ?>
+								<?php esc_html_e( 'Also apply to the product gallery images', 'agencia-rse-image-zoom' ); ?>
 							</label><br />
 							<label>
 								<input type="checkbox" value="1" name="<?php echo esc_attr( self::OPTION ); ?>[woo_disable]" <?php checked( $s['woo_disable'], 1 ); ?> />
-								<?php esc_html_e( 'Turn off the WooCommerce zoom (avoids a double zoom)', 'lupa-zoom' ); ?>
+								<?php esc_html_e( 'Turn off the WooCommerce zoom (avoids a double zoom)', 'agencia-rse-image-zoom' ); ?>
 							</label>
 						</td>
 					</tr>
@@ -370,27 +370,27 @@ final class Lupa_Zoom {
 			</form>
 
 			<hr />
-			<h2><?php esc_html_e( 'Usage', 'lupa-zoom' ); ?></h2>
-			<p><strong><?php esc_html_e( 'HTML / editor:', 'lupa-zoom' ); ?></strong></p>
+			<h2><?php esc_html_e( 'Usage', 'agencia-rse-image-zoom' ); ?></h2>
+			<p><strong><?php esc_html_e( 'HTML / editor:', 'agencia-rse-image-zoom' ); ?></strong></p>
 			<pre style="background:#fff;padding:12px;border:1px solid #dcdcde;overflow:auto;">&lt;img src="photo-800.jpg" data-lupa-src="photo-2000.jpg" class="lupa" alt="" /&gt;</pre>
-			<p><strong><?php esc_html_e( 'Page builder (class on the widget):', 'lupa-zoom' ); ?></strong></p>
+			<p><strong><?php esc_html_e( 'Page builder (class on the widget):', 'agencia-rse-image-zoom' ); ?></strong></p>
 			<pre style="background:#fff;padding:12px;border:1px solid #dcdcde;overflow:auto;">&lt;div class="elementor-widget-image lupa"&gt;
     &lt;div class="elementor-widget-container"&gt;&lt;img src="photo.jpg" /&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
-			<p class="description"><?php esc_html_e( 'Elementor: Advanced tab → CSS Classes → lupa. WPBakery: Extra class name → lupa.', 'lupa-zoom' ); ?></p>
-			<p><strong><?php esc_html_e( 'Shortcode:', 'lupa-zoom' ); ?></strong></p>
-			<pre style="background:#fff;padding:12px;border:1px solid #dcdcde;overflow:auto;">[lupa_zoom id="123"]
-[lupa_zoom src="/wp-content/uploads/photo.jpg" large="/wp-content/uploads/photo-full.jpg" zoom="3"]</pre>
-			<p><strong><?php esc_html_e( 'Per-image attributes:', 'lupa-zoom' ); ?></strong></p>
+			<p class="description"><?php esc_html_e( 'Elementor: Advanced tab → CSS Classes → lupa. WPBakery: Extra class name → lupa.', 'agencia-rse-image-zoom' ); ?></p>
+			<p><strong><?php esc_html_e( 'Shortcode:', 'agencia-rse-image-zoom' ); ?></strong></p>
+			<pre style="background:#fff;padding:12px;border:1px solid #dcdcde;overflow:auto;">[agrse_zoom id="123"]
+[agrse_zoom src="/wp-content/uploads/photo.jpg" large="/wp-content/uploads/photo-full.jpg" zoom="3"]</pre>
+			<p><strong><?php esc_html_e( 'Per-image attributes:', 'agencia-rse-image-zoom' ); ?></strong></p>
 			<ul style="list-style:disc;padding-left:20px;">
-				<li><code>data-lupa-src</code> — <?php esc_html_e( 'URL of the high-resolution image (otherwise the srcset or src is used).', 'lupa-zoom' ); ?></li>
-				<li><code>data-lupa-zoom</code> — <?php esc_html_e( 'A fixed zoom level, e.g. 2.5', 'lupa-zoom' ); ?></li>
+				<li><code>data-lupa-src</code> — <?php esc_html_e( 'URL of the high-resolution image (otherwise the srcset or src is used).', 'agencia-rse-image-zoom' ); ?></li>
+				<li><code>data-agencia-rse-image-zoom</code> — <?php esc_html_e( 'A fixed zoom level, e.g. 2.5', 'agencia-rse-image-zoom' ); ?></li>
 				<li><code>data-lupa-mode</code> — <code>inner</code> | <code>lens</code></li>
-				<li><code>data-lupa-lens</code> — <?php esc_html_e( 'Lens size in px (lens mode).', 'lupa-zoom' ); ?></li>
+				<li><code>data-lupa-lens</code> — <?php esc_html_e( 'Lens size in px (lens mode).', 'agencia-rse-image-zoom' ); ?></li>
 			</ul>
 		</div>
 		<?php
 	}
 }
 
-Lupa_Zoom::instance();
+AGRSE_Image_Zoom::instance();
