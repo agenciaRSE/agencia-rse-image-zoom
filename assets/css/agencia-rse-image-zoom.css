@@ -1,5 +1,5 @@
 /*!
- * Agencia RSE Image Zoom v1.4.0
+ * Agencia RSE Image Zoom v1.4.1
  */
 
 /* Contenedor -----------------------------------------------------------
@@ -76,21 +76,12 @@
 }
 
 .lupa-mode-lens .lupa-zoom-layer {
+	/* left, top y width los pone el JS según la caja de la imagen. */
 	top: 0;
-	left: 100%;
-	width: auto;
-	margin-left: 16px;
 	border: 1px solid rgba(0, 0, 0, 0.12);
 	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
 	background-color: #fff;
 	z-index: 999;
-}
-
-.lupa-mode-lens.lupa-panel-left .lupa-zoom-layer {
-	left: auto;
-	right: 100%;
-	margin-left: 0;
-	margin-right: 16px;
 }
 
 .lupa-zoom-lens {

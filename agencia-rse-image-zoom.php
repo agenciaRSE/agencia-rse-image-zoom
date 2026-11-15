@@ -3,7 +3,7 @@
  * Plugin Name:       Agencia RSE Image Zoom
  * Plugin URI:        https://github.com/agenciaRSE/agencia-rse-image-zoom
  * Description:       WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).
- * Version:           1.4.0
+ * Version:           1.4.1
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            AGENCIA RSE
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AGRSE_ZOOM_VERSION', '1.4.0' );
+define( 'AGRSE_ZOOM_VERSION', '1.4.1' );
 define( 'AGRSE_ZOOM_FILE', __FILE__ );
 define( 'AGRSE_ZOOM_URL', plugin_dir_url( __FILE__ ) );
 define( 'AGRSE_ZOOM_PATH', plugin_dir_path( __FILE__ ) );

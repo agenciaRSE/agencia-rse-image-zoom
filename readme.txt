@@ -4,7 +4,7 @@ Tags: image zoom, magnifier, hover zoom, woocommerce, elementor
 Requires at least: 5.6
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,10 @@ Return `false` from the `agrse_zoom_should_enqueue` filter on the pages where yo
 don't need it.
 
 == Changelog ==
+
+= 1.4.1 =
+* Fix: with the class on the <img> itself, the zoom no longer takes the whole page content as its container.
+* Fix: in "Lens + side panel" mode the panel is placed next to the image, not next to its wrapper, so it no longer opens off-screen.
 
 = 1.4.0 =
 * New "Cursor" setting: crosshair, magnifier (browser or plugin icon), hand or normal arrow.

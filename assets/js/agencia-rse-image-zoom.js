@@ -1,5 +1,5 @@
 /*!
- * Agencia RSE Image Zoom v1.4.0
+ * Agencia RSE Image Zoom v1.4.1
  * Efecto lupa tipo WooCommerce para cualquier imagen, sin dependencias.
  *
  * La clase (.lupa por defecto) puede ir en la propia <img> o en cualquier
@@ -250,10 +250,13 @@
 
 		var candidates = [];
 		var node = img.parentNode;
-		// Se sube como mucho hasta el elemento marcado.
+		// Se sube como mucho hasta el elemento marcado. Si la clase va en la
+		// propia <img>, solo hasta el primer bloque que la envuelve (figure,
+		// div…): sin ese tope se llegaba al contenido entero de la página.
+		var onImg = this.target === img;
 		while ( node && 1 === node.nodeType ) {
 			candidates.push( node );
-			if ( node === this.target ) {
+			if ( node === this.target || ( onImg && ! /^(A|PICTURE|SPAN)$/.test( node.tagName ) ) ) {
 				break;
 			}
 			node = node.parentNode;
@@ -514,8 +517,14 @@
 			this.layer.style.height = this.panelH + 'px';
 			this.layer.style.backgroundSize = ( this.dw * this.ratio ) + 'px ' + ( this.dh * this.ratio ) + 'px';
 
-			var fitsRight = ( rect.right + this.panelW + 20 ) <= window.innerWidth;
-			this.container.classList.toggle( 'lupa-panel-left', ! fitsRight );
+			// El panel va junto a la imagen, no junto al contenedor: en Gutenberg
+			// el figure ocupa todo el ancho aunque la imagen sea pequeña.
+			var gap = 16;
+			var spaceRight = window.innerWidth - ( box.vx + box.w ) - gap;
+			var spaceLeft = box.vx - gap;
+			var right = spaceRight >= this.panelW + 4 || spaceRight >= spaceLeft;
+			this.layer.style.left = ( right ? box.left + box.w + gap : box.left - gap - this.panelW ) + 'px';
+			this.container.classList.toggle( 'lupa-panel-left', ! right );
 		} else {
 			this.zw = this.dw * this.factor;
 			this.zh = this.dh * this.factor;
