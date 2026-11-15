@@ -7,7 +7,7 @@ Añade la clase `lupa` y, al pasar el ratón, la imagen se amplía siguiendo el 
 
 [![WordPress 5.6+](https://img.shields.io/badge/WordPress-5.6%2B-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](readme.txt)
 [![PHP 7.2+](https://img.shields.io/badge/PHP-7.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](agencia-rse-image-zoom.php)
-[![Versión 1.3.0](https://img.shields.io/badge/versión-1.3.0-0a0a0a?style=for-the-badge)](readme.txt)
+[![Versión 1.4.0](https://img.shields.io/badge/versión-1.4.0-0a0a0a?style=for-the-badge)](readme.txt)
 [![Licencia GPLv2+](https://img.shields.io/badge/licencia-GPLv2%2B-a855f7?style=for-the-badge)](LICENSE)
 
 [Demo](#-pruébalo-en-local) · [Uso](#-uso) · [English](#-in-english) · [Contribuir](#-contribuir)

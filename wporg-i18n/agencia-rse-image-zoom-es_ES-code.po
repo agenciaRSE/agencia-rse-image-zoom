@@ -76,6 +76,27 @@ msgstr "Ancho del panel (px)"
 msgid "Fade (ms)"
 msgstr "Transición (ms)"
 
+msgid "Cursor"
+msgstr "Cursor"
+
+msgid "Crosshair"
+msgstr "Cruceta"
+
+msgid "Magnifier with + (browser cursor)"
+msgstr "Lupa con + (cursor del navegador)"
+
+msgid "Magnifier (same in every browser)"
+msgstr "Lupa (igual en todos los navegadores)"
+
+msgid "Hand"
+msgstr "Mano"
+
+msgid "Normal arrow"
+msgstr "Flecha normal"
+
+msgid "Pointer shown while zooming over an image."
+msgstr "Puntero que se ve al hacer zoom sobre una imagen."
+
 msgid "Touch"
 msgstr "Táctil"
 

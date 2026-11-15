@@ -3,7 +3,7 @@
  * Plugin Name:       Agencia RSE Image Zoom
  * Plugin URI:        https://github.com/agenciaRSE/agencia-rse-image-zoom
  * Description:       WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).
- * Version:           1.3.0
+ * Version:           1.4.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            AGENCIA RSE
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AGRSE_ZOOM_VERSION', '1.3.0' );
+define( 'AGRSE_ZOOM_VERSION', '1.4.0' );
 define( 'AGRSE_ZOOM_FILE', __FILE__ );
 define( 'AGRSE_ZOOM_URL', plugin_dir_url( __FILE__ ) );
 define( 'AGRSE_ZOOM_PATH', plugin_dir_path( __FILE__ ) );
@@ -61,6 +61,22 @@ final class AGRSE_Image_Zoom {
 			'touch'        => 0,
 			'woo_gallery'  => 0,         // aplicar también a la galería de producto WooCommerce
 			'woo_disable'  => 0,         // desactivar el zoom nativo de WooCommerce
+			'cursor'       => 'crosshair',
+		);
+	}
+
+	/**
+	 * Cursores disponibles sobre la imagen: clave => valor CSS de cursor.
+	 * La lupa propia es un SVG (aro negro con borde blanco) con zoom-in de respaldo.
+	 */
+	public static function cursors() {
+		$magnifier = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Ccircle cx='13' cy='13' r='9' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M20 20l8 8' stroke='%23fff' stroke-width='7'/%3E%3Ccircle cx='13' cy='13' r='9' stroke='%23000' stroke-width='2.5'/%3E%3Cpath d='M20 20l8 8' stroke='%23000' stroke-width='4'/%3E%3C/g%3E%3C/svg%3E\") 13 13, zoom-in";
+		return array(
+			'crosshair' => 'crosshair',
+			'zoom-in'   => 'zoom-in',
+			'magnifier' => $magnifier,
+			'pointer'   => 'pointer',
+			'default'   => 'default',
 		);
 	}
 
@@ -100,6 +116,7 @@ final class AGRSE_Image_Zoom {
 		$out['touch']       = empty( $input['touch'] ) ? 0 : 1;
 		$out['woo_gallery'] = empty( $input['woo_gallery'] ) ? 0 : 1;
 		$out['woo_disable'] = empty( $input['woo_disable'] ) ? 0 : 1;
+		$out['cursor']      = ( isset( $input['cursor'] ) && array_key_exists( $input['cursor'], self::cursors() ) ) ? $input['cursor'] : $d['cursor'];
 
 		if ( $out['max_zoom'] < $out['min_zoom'] ) {
 			$out['max_zoom'] = $out['min_zoom'];
@@ -146,6 +163,11 @@ final class AGRSE_Image_Zoom {
 			array(),
 			AGRSE_ZOOM_VERSION
 		);
+
+		$cursors = self::cursors();
+		if ( 'crosshair' !== $s['cursor'] && isset( $cursors[ $s['cursor'] ] ) ) {
+			wp_add_inline_style( 'agencia-rse-image-zoom', '.lupa-zoom-container.is-ready{cursor:' . $cursors[ $s['cursor'] ] . '}' );
+		}
 
 		wp_enqueue_script(
 			'agencia-rse-image-zoom',
@@ -303,6 +325,19 @@ final class AGRSE_Image_Zoom {
 								<option value="lens" <?php selected( $s['mode'], 'lens' ); ?>><?php esc_html_e( 'Lens + side panel', 'agencia-rse-image-zoom' ); ?></option>
 							</select>
 							<p class="description"><?php esc_html_e( 'Override it per image with data-lupa-mode="lens".', 'agencia-rse-image-zoom' ); ?></p>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="lz-cursor"><?php esc_html_e( 'Cursor', 'agencia-rse-image-zoom' ); ?></label></th>
+						<td>
+							<select id="lz-cursor" name="<?php echo esc_attr( self::OPTION ); ?>[cursor]">
+								<option value="crosshair" <?php selected( $s['cursor'], 'crosshair' ); ?>><?php esc_html_e( 'Crosshair', 'agencia-rse-image-zoom' ); ?></option>
+								<option value="zoom-in" <?php selected( $s['cursor'], 'zoom-in' ); ?>><?php esc_html_e( 'Magnifier with + (browser cursor)', 'agencia-rse-image-zoom' ); ?></option>
+								<option value="magnifier" <?php selected( $s['cursor'], 'magnifier' ); ?>><?php esc_html_e( 'Magnifier (same in every browser)', 'agencia-rse-image-zoom' ); ?></option>
+								<option value="pointer" <?php selected( $s['cursor'], 'pointer' ); ?>><?php esc_html_e( 'Hand', 'agencia-rse-image-zoom' ); ?></option>
+								<option value="default" <?php selected( $s['cursor'], 'default' ); ?>><?php esc_html_e( 'Normal arrow', 'agencia-rse-image-zoom' ); ?></option>
+							</select>
+							<p class="description"><?php esc_html_e( 'Pointer shown while zooming over an image.', 'agencia-rse-image-zoom' ); ?></p>
 						</td>
 					</tr>
 					<tr>

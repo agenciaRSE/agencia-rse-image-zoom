@@ -4,7 +4,7 @@ Tags: image zoom, magnifier, hover zoom, woocommerce, elementor
 Requires at least: 5.6
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,9 @@ Return `false` from the `agrse_zoom_should_enqueue` filter on the pages where yo
 don't need it.
 
 == Changelog ==
+
+= 1.4.0 =
+* New "Cursor" setting: crosshair, magnifier (browser or plugin icon), hand or normal arrow.
 
 = 1.3.0 =
 * Renamed to Agencia RSE Image Zoom (slug agencia-rse-image-zoom). Shortcode is now [agrse_zoom]; PHP filters and the JS API use the agrse prefix.
