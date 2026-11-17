@@ -8,9 +8,10 @@ Añade la clase `lupa` y, al pasar el ratón, la imagen se amplía siguiendo el 
 [![WordPress 5.6+](https://img.shields.io/badge/WordPress-5.6%2B-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](readme.txt)
 [![PHP 7.2+](https://img.shields.io/badge/PHP-7.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](agencia-rse-image-zoom.php)
 [![Versión 1.4.1](https://img.shields.io/badge/versión-1.4.1-0a0a0a?style=for-the-badge)](readme.txt)
+[![WordPress.org](https://img.shields.io/badge/WordPress.org-descargar-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/agencia-rse-image-zoom/)
 [![Licencia GPLv2+](https://img.shields.io/badge/licencia-GPLv2%2B-a855f7?style=for-the-badge)](LICENSE)
 
-[Demo](#-pruébalo-en-local) · [Uso](#-uso) · [English](#-in-english) · [Contribuir](#-contribuir)
+[WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/) · [Demo](#-pruébalo-en-local) · [Uso](#-uso) · [English](#-in-english) · [Contribuir](#-contribuir)
 
 </div>
 
@@ -34,6 +35,10 @@ El zoom de las fichas de WooCommerce es justo lo que quieres en un catálogo, un
 - 🪶 **Ligero:** JavaScript propio, sin jQuery ni dependencias.
 
 ## 📦 Instalación
+
+**Desde WordPress (recomendado):** *Plugins → Añadir nuevo*, busca «Agencia RSE Image Zoom» e instálalo, o descárgalo de [WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/).
+
+**Desde GitHub:**
 
 1. Descarga el repositorio: **Code → Download ZIP**.
 2. Descomprime y renombra la carpeta a `agencia-rse-image-zoom`.
@@ -89,7 +94,7 @@ Los pull requests son bienvenidos: pequeños, con una explicación del porqué y
 
 ## 🇬🇧 In English
 
-**Agencia RSE Image Zoom** brings WooCommerce-style hover zoom to any image in any WordPress theme. Add the `lupa` class to an image or to the block that wraps it (Elementor, WPBakery, figures, links…) and the image zooms in under the cursor. It works with CSS background images, respects `object-fit`, supports lazy-load and dynamic content, offers an inner-zoom or lens-plus-panel mode, and ships with no jQuery or dependencies (~7 KB gzipped). Shortcode: `[agrse_zoom id="123"]`. Contributions are welcome: open an issue or a pull request.
+**Agencia RSE Image Zoom** brings WooCommerce-style hover zoom to any image in any WordPress theme. Add the `lupa` class to an image or to the block that wraps it (Elementor, WPBakery, figures, links…) and the image zooms in under the cursor. It works with CSS background images, respects `object-fit`, supports lazy-load and dynamic content, offers an inner-zoom or lens-plus-panel mode, and ships with no jQuery or dependencies (~7 KB gzipped). Shortcode: `[agrse_zoom id="123"]`. Install it from [WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/). Contributions are welcome: open an issue or a pull request.
 
 ## 📄 Licencia
 
