@@ -1,0 +1,29 @@
+/* OpenVault suite: the same header and accents on the settings screen of every
+   OpenVault plugin. Copied verbatim into each plugin; keep the copies identical. */
+.ov-suite {
+	--wp-admin-theme-color: #4d7c0f;
+	--wp-admin-theme-color--rgb: 77, 124, 15;
+	--wp-admin-theme-color-darker-10: #3f6212;
+	--wp-admin-theme-color-darker-10--rgb: 63, 98, 18;
+	--wp-admin-theme-color-darker-20: #365314;
+	--wp-admin-theme-color-darker-20--rgb: 54, 83, 20;
+}
+.ov-suite-head { display: flex; align-items: center; gap: 14px; margin: 10px 0 20px; padding: 16px 22px; background: #050505; border-radius: 12px; }
+.ov-suite-logo { width: 40px; height: 40px; border-radius: 10px; border: 1px solid #27272a; background: #0a0a0a; display: grid; place-items: center; flex-shrink: 0; }
+.ov-suite-logo svg { width: 20px; height: 20px; display: block; }
+.ov-suite-eyebrow { margin: 0 0 2px; color: #c8ff3e; font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+.wrap.ov-suite .ov-suite-head h1 { margin: 0; padding: 0; color: #fafafa; font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; }
+
+/* Accents: dark green on white for links and focus (the volt does not reach 3:1
+   on white), volt with black text for the primary button. */
+.ov-suite a { color: #3f6212; }
+.ov-suite a:hover { color: #16181d; }
+.ov-suite .button-primary { background: #c8ff3e; border-color: #4d7c0f; color: #050505; text-shadow: none; }
+.ov-suite .button-primary:hover,
+.ov-suite .button-primary:focus { background: #d9ff7a; border-color: #3f6212; color: #050505; }
+.ov-suite .button-primary:focus { box-shadow: 0 0 0 1px #fff, 0 0 0 3px #4d7c0f; }
+.ov-suite .button:not(.button-primary):hover { border-color: #4d7c0f; color: #3f6212; }
+.ov-suite input:focus, .ov-suite select:focus, .ov-suite textarea:focus { border-color: #4d7c0f; box-shadow: 0 0 0 1px #4d7c0f; }
+.ov-suite input[type=checkbox]:checked::before { content: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%234d7c0f%27%2F%3E%3C%2Fsvg%3E"); }
+.ov-suite input[type=radio]:checked::before { background-color: #4d7c0f; }
+.ov-suite .nav-tab-active, .ov-suite .nav-tab-active:hover { border-bottom-color: #f0f0f1; color: #16181d; box-shadow: inset 0 3px 0 #4d7c0f; }

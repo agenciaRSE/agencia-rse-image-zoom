@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Agencia RSE Image Zoom\n"
+"Project-Id-Version: OpenVault Image Zoom\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-msgid "Agencia RSE Image Zoom"
-msgstr "Agencia RSE Image Zoom"
+msgid "OpenVault Image Zoom"
+msgstr "OpenVault Image Zoom"
 
 msgid "WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.)."
 msgstr "Efecto lupa (zoom al pasar el ratón) tipo WooCommerce para cualquier imagen de cualquier tema. Basta con añadir la clase CSS <code>lupa</code> a la imagen o al contenedor que la envuelve (widget de Elementor, elemento de WPBakery, etc.)."

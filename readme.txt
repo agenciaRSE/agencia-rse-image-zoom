@@ -1,10 +1,10 @@
-=== Agencia RSE Image Zoom ===
-Contributors: dmeijide
+=== OpenVault Image Zoom ===
+Contributors: openvault
 Tags: image zoom, magnifier, hover zoom, woocommerce, elementor
 Requires at least: 5.6
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ WooCommerce product zoom, without depending on WooCommerce or on the theme.
 * Works with lazy loading (it waits for the placeholder to be replaced).
 * Works with content loaded by AJAX, sliders and Elementor (MutationObserver).
 * Optional on touch screens: press and drag.
-* Settings in *Settings > Agencia RSE Image Zoom*.
+* Settings in *Settings > OpenVault Image Zoom*.
 
 "Lupa" is Spanish for magnifying glass.
 
@@ -62,7 +62,7 @@ The plugin makes no external requests and stores no visitor data.
 1. Install the plugin from *Plugins > Add New*, or upload the `agencia-rse-image-zoom` folder to `/wp-content/plugins/`.
 2. Activate it.
 3. Add the `lupa` class to an image or to the block that wraps it.
-4. Optional: adjust the mode and zoom level in *Settings > Agencia RSE Image Zoom*.
+4. Optional: adjust the mode and zoom level in *Settings > OpenVault Image Zoom*.
 
 == Frequently Asked Questions ==
 
@@ -81,7 +81,17 @@ The one in `data-lupa-src` if present. Otherwise it picks the largest image in t
 Return `false` from the `agrse_zoom_should_enqueue` filter on the pages where you
 don't need it.
 
+== Screenshots ==
+
+1. Inner zoom: the image zooms in under the cursor and follows it, like the WooCommerce product zoom.
+2. Lens mode: a lens over the image and the zoomed area in a side panel.
+3. Settings screen: selector, mode, cursor, zoom level, touch and WooCommerce options.
+
 == Changelog ==
+
+= 1.5.0 =
+* The plugin is now part of OpenVault: new name (OpenVault Image Zoom) and the OpenVault settings screen. Nothing else changes: same slug, settings, shortcode, CSS class, filters and JS API.
+* Screenshots added to the plugin page.
 
 = 1.4.1 =
 * Fix: with the class on the <img> itself, the zoom no longer takes the whole page content as its container.

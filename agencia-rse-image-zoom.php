@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:       Agencia RSE Image Zoom
- * Plugin URI:        https://github.com/agenciaRSE/agencia-rse-image-zoom
+ * Plugin Name:       OpenVault Image Zoom
+ * Plugin URI:        https://openvault.pro
  * Description:       WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).
- * Version:           1.4.1
+ * Version:           1.5.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
- * Author:            AGENCIA RSE
- * Author URI:        https://agenciarse.com/
+ * Author:            OpenVault
+ * Author URI:        https://openvault.pro
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       agencia-rse-image-zoom
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AGRSE_ZOOM_VERSION', '1.4.1' );
+define( 'AGRSE_ZOOM_VERSION', '1.5.0' );
 define( 'AGRSE_ZOOM_FILE', __FILE__ );
 define( 'AGRSE_ZOOM_URL', plugin_dir_url( __FILE__ ) );
 define( 'AGRSE_ZOOM_PATH', plugin_dir_path( __FILE__ ) );
@@ -39,6 +39,7 @@ final class AGRSE_Image_Zoom {
 	private function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 20 );
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( AGRSE_ZOOM_FILE ), array( $this, 'action_links' ) );
 		add_shortcode( 'agrse_zoom', array( $this, 'shortcode' ) );
@@ -129,6 +130,13 @@ final class AGRSE_Image_Zoom {
 		$url = admin_url( 'options-general.php?page=agencia-rse-image-zoom' );
 		array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'agencia-rse-image-zoom' ) . '</a>' );
 		return $links;
+	}
+
+	/** Same header and accents as the rest of the OpenVault suite. */
+	public function enqueue_admin_assets( $hook ) {
+		if ( 'settings_page_agencia-rse-image-zoom' === $hook ) {
+			wp_enqueue_style( 'openvault-suite', AGRSE_ZOOM_URL . 'assets/css/ov-suite.css', array(), '1.0.0' );
+		}
 	}
 
 	/* ---------------------------------------------------------------------
@@ -278,8 +286,8 @@ final class AGRSE_Image_Zoom {
 
 	public function add_settings_page() {
 		add_options_page(
-			__( 'Agencia RSE Image Zoom', 'agencia-rse-image-zoom' ),
-			__( 'Agencia RSE Image Zoom', 'agencia-rse-image-zoom' ),
+			__( 'OpenVault Image Zoom', 'agencia-rse-image-zoom' ),
+			__( 'OpenVault Image Zoom', 'agencia-rse-image-zoom' ),
 			'manage_options',
 			'agencia-rse-image-zoom',
 			array( $this, 'render_settings_page' )
@@ -292,8 +300,9 @@ final class AGRSE_Image_Zoom {
 		}
 		$s = self::get_settings();
 		?>
-		<div class="wrap">
-			<h1><?php esc_html_e( 'Agencia RSE Image Zoom', 'agencia-rse-image-zoom' ); ?></h1>
+		<div class="wrap ov-suite">
+			<div class="ov-suite-head"><span class="ov-suite-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#c8ff3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span><div><p class="ov-suite-eyebrow">OpenVault</p><h1><?php esc_html_e( 'OpenVault Image Zoom', 'agencia-rse-image-zoom' ); ?></h1></div></div>
+			<hr class="wp-header-end" />
 			<p>
 				<?php
 				printf(

@@ -1,5 +1,5 @@
 /*!
- * Agencia RSE Image Zoom v1.4.1
+ * OpenVault Image Zoom v1.5.0
  * Efecto lupa tipo WooCommerce para cualquier imagen, sin dependencias.
  *
  * La clase (.lupa por defecto) puede ir en la propia <img> o en cualquier

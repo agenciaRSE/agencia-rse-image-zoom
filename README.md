@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔍 Agencia RSE Image Zoom
+# 🔍 OpenVault Image Zoom
 
 **El zoom de producto de WooCommerce, en cualquier imagen de cualquier tema de WordPress.**
 Añade la clase `lupa` y, al pasar el ratón, la imagen se amplía siguiendo el cursor. Sin jQuery, sin librerías, unos 7 KB comprimido.
@@ -19,7 +19,7 @@ Añade la clase `lupa` y, al pasar el ratón, la imagen se amplía siguiendo el 
 
 ## ¿Por qué?
 
-El zoom de las fichas de WooCommerce es justo lo que quieres en un catálogo, un portfolio o una galería… pero solo existe en la ficha de producto y depende del tema. **Agencia RSE Image Zoom** lleva ese mismo comportamiento a cualquier imagen de la web, con una clase CSS.
+El zoom de las fichas de WooCommerce es justo lo que quieres en un catálogo, un portfolio o una galería… pero solo existe en la ficha de producto y depende del tema. **OpenVault Image Zoom** lleva ese mismo comportamiento a cualquier imagen de la web, con una clase CSS.
 
 ## ✨ Qué hace
 
@@ -31,19 +31,19 @@ El zoom de las fichas de WooCommerce es justo lo que quieres en un catálogo, un
 - 💤 **Compatible con lazy-load:** espera a que se cargue la imagen buena.
 - 🔄 **Contenido dinámico:** funciona con AJAX, sliders y Elementor (`MutationObserver`).
 - 📱 **Táctil opcional:** mantener el dedo y arrastrar.
-- ⚙️ **Ajustes** en *Ajustes → Agencia RSE Image Zoom*.
+- ⚙️ **Ajustes** en *Ajustes → OpenVault Image Zoom*.
 - 🪶 **Ligero:** JavaScript propio, sin jQuery ni dependencias.
 
 ## 📦 Instalación
 
-**Desde WordPress (recomendado):** *Plugins → Añadir nuevo*, busca «Agencia RSE Image Zoom» e instálalo, o descárgalo de [WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/).
+**Desde WordPress (recomendado):** *Plugins → Añadir nuevo*, busca «OpenVault Image Zoom» e instálalo, o descárgalo de [WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/).
 
 **Desde GitHub:**
 
 1. Descarga el repositorio: **Code → Download ZIP**.
 2. Descomprime y renombra la carpeta a `agencia-rse-image-zoom`.
 3. Súbela a `wp-content/plugins/` (o sube el ZIP desde *Plugins → Añadir nuevo → Subir plugin*).
-4. Actívalo y revisa las opciones en *Ajustes → Agencia RSE Image Zoom*.
+4. Actívalo y revisa las opciones en *Ajustes → OpenVault Image Zoom*.
 
 ## 🛠️ Uso
 
@@ -94,8 +94,8 @@ Los pull requests son bienvenidos: pequeños, con una explicación del porqué y
 
 ## 🇬🇧 In English
 
-**Agencia RSE Image Zoom** brings WooCommerce-style hover zoom to any image in any WordPress theme. Add the `lupa` class to an image or to the block that wraps it (Elementor, WPBakery, figures, links…) and the image zooms in under the cursor. It works with CSS background images, respects `object-fit`, supports lazy-load and dynamic content, offers an inner-zoom or lens-plus-panel mode, and ships with no jQuery or dependencies (~7 KB gzipped). Shortcode: `[agrse_zoom id="123"]`. Install it from [WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/). Contributions are welcome: open an issue or a pull request.
+**OpenVault Image Zoom** brings WooCommerce-style hover zoom to any image in any WordPress theme. Add the `lupa` class to an image or to the block that wraps it (Elementor, WPBakery, figures, links…) and the image zooms in under the cursor. It works with CSS background images, respects `object-fit`, supports lazy-load and dynamic content, offers an inner-zoom or lens-plus-panel mode, and ships with no jQuery or dependencies (~7 KB gzipped). Shortcode: `[agrse_zoom id="123"]`. Install it from [WordPress.org](https://wordpress.org/plugins/agencia-rse-image-zoom/). Contributions are welcome: open an issue or a pull request.
 
 ## 📄 Licencia
 
-[GPLv2 o posterior](LICENSE) © Diego Meijide · Hecho por [AGENCIA RSE](https://agenciarse.com/estudio/), estudio de diseño y desarrollo WordPress de A Coruña.
+[GPLv2 o posterior](LICENSE) © OpenVault · [openvault.pro](https://openvault.pro)

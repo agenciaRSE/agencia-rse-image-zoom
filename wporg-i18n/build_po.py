@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 T = {
-    'Agencia RSE Image Zoom': 'Agencia RSE Image Zoom',
+    'OpenVault Image Zoom': 'OpenVault Image Zoom',
     'WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).':
         'Efecto lupa (zoom al pasar el ratón) tipo WooCommerce para cualquier imagen de cualquier tema. Basta con añadir la clase CSS <code>lupa</code> a la imagen o al contenedor que la envuelve (widget de Elementor, elemento de WPBakery, etc.).',
     'AGENCIA RSE': 'AGENCIA RSE',
@@ -78,7 +78,7 @@ def q(text):
 
 lines = [
     'msgid ""', 'msgstr ""',
-    '"Project-Id-Version: Agencia RSE Image Zoom\\n"',
+    '"Project-Id-Version: OpenVault Image Zoom\\n"',
     '"Language: es_ES\\n"',
     '"MIME-Version: 1.0\\n"',
     '"Content-Type: text/plain; charset=UTF-8\\n"',
