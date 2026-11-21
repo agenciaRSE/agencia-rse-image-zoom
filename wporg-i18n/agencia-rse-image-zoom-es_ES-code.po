@@ -13,14 +13,11 @@ msgstr "OpenVault Image Zoom"
 msgid "WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.)."
 msgstr "Efecto lupa (zoom al pasar el ratón) tipo WooCommerce para cualquier imagen de cualquier tema. Basta con añadir la clase CSS <code>lupa</code> a la imagen o al contenedor que la envuelve (widget de Elementor, elemento de WPBakery, etc.)."
 
-msgid "AGENCIA RSE"
-msgstr "AGENCIA RSE"
+msgid "OpenVault"
+msgstr "OpenVault"
 
-msgid "https://agenciarse.com/"
-msgstr "https://agenciarse.com/"
-
-msgid "https://github.com/agenciaRSE/agencia-rse-image-zoom"
-msgstr "https://github.com/agenciaRSE/agencia-rse-image-zoom"
+msgid "https://openvault.pro"
+msgstr "https://openvault.pro"
 
 msgid "Settings"
 msgstr "Ajustes"
@@ -34,8 +31,26 @@ msgstr "La clase puede ir en la propia imagen o en cualquier contenedor: un widg
 msgid "CSS selector"
 msgstr "Selector CSS"
 
-msgid "Images it applies to. Separate several selectors with commas. Default: .lupa"
-msgstr "Imágenes a las que se aplica. Se admiten varios selectores separados por comas. Por defecto: .lupa"
+msgid "Any class or CSS selector, for example .lupa, .zoom or .gallery img. Separate several with commas. Default: .lupa"
+msgstr "Cualquier clase o selector CSS, por ejemplo .lupa, .zoom o .gallery img. Separa varios con comas. Por defecto: .lupa"
+
+msgid "In Elementor, the block editor, WPBakery and Beaver Builder you can also turn on the \"Hover zoom\" switch of the image widget."
+msgstr "En Elementor, el editor de bloques, WPBakery y Beaver Builder también puedes activar el interruptor «Zoom al pasar el ratón» del widget de imagen."
+
+msgid "Hover zoom"
+msgstr "Zoom al pasar el ratón"
+
+msgid "Zoom in on the image under the cursor."
+msgstr "Amplía la imagen bajo el cursor."
+
+msgid "Zoom in on the image under the cursor"
+msgstr "Ampliar la imagen bajo el cursor"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "No"
+msgstr "No"
 
 msgid "Mode"
 msgstr "Modo"

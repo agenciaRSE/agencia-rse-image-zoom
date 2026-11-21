@@ -15,16 +15,22 @@ T = {
     'OpenVault Image Zoom': 'OpenVault Image Zoom',
     'WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).':
         'Efecto lupa (zoom al pasar el ratón) tipo WooCommerce para cualquier imagen de cualquier tema. Basta con añadir la clase CSS <code>lupa</code> a la imagen o al contenedor que la envuelve (widget de Elementor, elemento de WPBakery, etc.).',
-    'AGENCIA RSE': 'AGENCIA RSE',
-    'https://agenciarse.com/': 'https://agenciarse.com/',
-    'https://github.com/agenciaRSE/agencia-rse-image-zoom': 'https://github.com/agenciaRSE/agencia-rse-image-zoom',
+    'OpenVault': 'OpenVault',
+    'https://openvault.pro': 'https://openvault.pro',
     'Settings': 'Ajustes',
     'Add the %s class to turn on hover zoom.': 'Añade la clase %s para activar el zoom al pasar el ratón.',
     'The class can go on the image itself or on any block that wraps it: an Elementor widget, a WPBakery element, a figure, a link… It also works on elements whose image is a CSS background-image.':
         'La clase puede ir en la propia imagen o en cualquier contenedor: un widget de Elementor, un elemento de WPBakery, un figure, un enlace… También funciona en elementos cuya imagen es un background-image de CSS.',
     'CSS selector': 'Selector CSS',
-    'Images it applies to. Separate several selectors with commas. Default: .lupa':
-        'Imágenes a las que se aplica. Se admiten varios selectores separados por comas. Por defecto: .lupa',
+    'Any class or CSS selector, for example .lupa, .zoom or .gallery img. Separate several with commas. Default: .lupa':
+        'Cualquier clase o selector CSS, por ejemplo .lupa, .zoom o .gallery img. Separa varios con comas. Por defecto: .lupa',
+    'In Elementor, the block editor, WPBakery and Beaver Builder you can also turn on the "Hover zoom" switch of the image widget.':
+        'En Elementor, el editor de bloques, WPBakery y Beaver Builder también puedes activar el interruptor «Zoom al pasar el ratón» del widget de imagen.',
+    'Hover zoom': 'Zoom al pasar el ratón',
+    'Zoom in on the image under the cursor.': 'Amplía la imagen bajo el cursor.',
+    'Zoom in on the image under the cursor': 'Ampliar la imagen bajo el cursor',
+    'Yes': 'Sí',
+    'No': 'No',
     'Mode': 'Modo',
     'Inner zoom (like WooCommerce)': 'Zoom interno (como WooCommerce)',
     'Lens + side panel': 'Lupa + panel lateral',
@@ -64,7 +70,8 @@ T = {
     'Lens size in px (lens mode).': 'Tamaño de la lupa en px (modo lens).',
 }
 
-src = (ROOT / 'agencia-rse-image-zoom.php').read_text(encoding='utf-8')
+src = ''.join((ROOT / f).read_text(encoding='utf-8') for f in (
+    'agencia-rse-image-zoom.php', 'includes/builders.php', 'assets/js/block-editor.js'))
 found = {m.replace("\\'", "'") for m in re.findall(
     r"(?:esc_html_e|esc_html__|esc_attr_e|esc_attr__|_e|__)\(\s*'((?:[^'\\]|\\.)*)'", src)}
 missing = found - set(T)

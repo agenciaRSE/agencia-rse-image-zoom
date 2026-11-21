@@ -3,7 +3,7 @@
  * Plugin Name:       OpenVault Image Zoom
  * Plugin URI:        https://openvault.pro
  * Description:       WooCommerce-style hover zoom for any image in any theme. Add the <code>lupa</code> CSS class to the image or to the block that wraps it (Elementor widget, WPBakery element, etc.).
- * Version:           1.5.0
+ * Version:           1.6.0
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            OpenVault
@@ -17,10 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AGRSE_ZOOM_VERSION', '1.5.0' );
+define( 'AGRSE_ZOOM_VERSION', '1.6.0' );
 define( 'AGRSE_ZOOM_FILE', __FILE__ );
 define( 'AGRSE_ZOOM_URL', plugin_dir_url( __FILE__ ) );
 define( 'AGRSE_ZOOM_PATH', plugin_dir_path( __FILE__ ) );
+
+require_once AGRSE_ZOOM_PATH . 'includes/builders.php';
 
 final class AGRSE_Image_Zoom {
 
@@ -155,7 +157,8 @@ final class AGRSE_Image_Zoom {
 
 		$s = self::get_settings();
 
-		$selector = $s['selector'];
+		// The page builder switches add this class, whatever the selector setting is.
+		$selector = $s['selector'] . ', .' . AGRSE_Zoom_Builders::CSS_CLASS;
 		if ( $s['woo_gallery'] ) {
 			$selector .= ', .woocommerce-product-gallery__image img, .wp-post-image';
 		}
@@ -313,6 +316,9 @@ final class AGRSE_Image_Zoom {
 				?>
 			</p>
 			<p class="description">
+				<?php esc_html_e( 'In Elementor, the block editor, WPBakery and Beaver Builder you can also turn on the "Hover zoom" switch of the image widget.', 'agencia-rse-image-zoom' ); ?>
+			</p>
+			<p class="description">
 				<?php esc_html_e( 'The class can go on the image itself or on any block that wraps it: an Elementor widget, a WPBakery element, a figure, a link… It also works on elements whose image is a CSS background-image.', 'agencia-rse-image-zoom' ); ?>
 			</p>
 
@@ -323,7 +329,7 @@ final class AGRSE_Image_Zoom {
 						<th scope="row"><label for="lz-selector"><?php esc_html_e( 'CSS selector', 'agencia-rse-image-zoom' ); ?></label></th>
 						<td>
 							<input type="text" id="lz-selector" class="regular-text code" name="<?php echo esc_attr( self::OPTION ); ?>[selector]" value="<?php echo esc_attr( $s['selector'] ); ?>" />
-							<p class="description"><?php esc_html_e( 'Images it applies to. Separate several selectors with commas. Default: .lupa', 'agencia-rse-image-zoom' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Any class or CSS selector, for example .lupa, .zoom or .gallery img. Separate several with commas. Default: .lupa', 'agencia-rse-image-zoom' ); ?></p>
 						</td>
 					</tr>
 					<tr>
@@ -438,3 +444,4 @@ final class AGRSE_Image_Zoom {
 }
 
 AGRSE_Image_Zoom::instance();
+AGRSE_Zoom_Builders::init();

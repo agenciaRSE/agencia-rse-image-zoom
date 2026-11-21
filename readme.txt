@@ -4,7 +4,7 @@ Tags: image zoom, magnifier, hover zoom, woocommerce, elementor
 Requires at least: 5.6
 Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,8 @@ WooCommerce product zoom, without depending on WooCommerce or on the theme.
 * Works with lazy loading (it waits for the placeholder to be replaced).
 * Works with content loaded by AJAX, sliders and Elementor (MutationObserver).
 * Optional on touch screens: press and drag.
+* "Hover zoom" switch on the image widgets of Elementor (Image and the v4 atomic Image), the block editor (Image block), WPBakery (Single Image) and Beaver Builder (Photo).
+* Use any class or selector, not only `lupa`: set it in the settings, for example `.lupa, .zoom`.
 * Settings in *Settings > OpenVault Image Zoom*.
 
 "Lupa" is Spanish for magnifying glass.
@@ -37,10 +39,14 @@ HTML:
 
     <img src="photo-800.jpg" data-lupa-src="photo-2000.jpg" class="lupa" alt="" />
 
-Page builders: put the class on the widget and the image stays inside it.
+Page builders: turn on the *Hover zoom* switch of the image widget.
 
-* Elementor: *Advanced > CSS Classes >* `lupa`
-* WPBakery: *Extra class name >* `lupa`
+* Elementor: Image widget (*Content > Hover zoom*) and the v4 atomic Image.
+* Block editor: Image block, *Hover zoom* panel in the sidebar.
+* WPBakery: Single Image, *Hover zoom* checkbox.
+* Beaver Builder: Photo module, *Hover zoom*.
+
+Any other builder or widget: put the class (`lupa` by default) in its CSS class field. The image stays inside the widget.
 
 Shortcode:
 
@@ -86,8 +92,13 @@ don't need it.
 1. Inner zoom: the image zooms in under the cursor and follows it, like the WooCommerce product zoom.
 2. Lens mode: a lens over the image and the zoomed area in a side panel.
 3. Settings screen: selector, mode, cursor, zoom level, touch and WooCommerce options.
+4. Elementor: the Hover zoom switch on the Image widget. The block editor, WPBakery and Beaver Builder have the same switch.
 
 == Changelog ==
+
+= 1.6.0 =
+* New "Hover zoom" switch on the image widgets of Elementor (Image and atomic Image), the block editor (Image block), WPBakery (Single Image) and Beaver Builder (Photo).
+* The settings explain that any class or selector works, for example `.lupa, .zoom`.
 
 = 1.5.0 =
 * The plugin is now part of OpenVault: new name (OpenVault Image Zoom) and the OpenVault settings screen. Nothing else changes: same slug, settings, shortcode, CSS class, filters and JS API.
